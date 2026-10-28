@@ -1,0 +1,52 @@
+name: Web (Next.js)
+
+on:
+  push:
+    branches: [main]
+    paths: ["web/**", "docker-compose.yml", ".github/workflows/web.yml"]
+  pull_request:
+    paths: ["web/**", "docker-compose.yml", ".github/workflows/web.yml"]
+
+concurrency:
+  group: web-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: web
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: check
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build the production image
+        run: docker build -t mudawamah-web ./web
+      - name: Start the stack and check health
+        working-directory: .
+        run: |
+          docker compose up -d --build
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:3000/api/v1/health; then exit 0; fi
+            sleep 2
+          done
+          docker compose logs web
+          exit 1

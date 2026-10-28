@@ -1,0 +1,14 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - lib/l10n/gen/**
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+linter:
+  rules:
+    # The app is not a published package, so API docs on every public member add noise.
+    public_member_api_docs: false
+    # Single-method interfaces (Clock, repositories) are the seams tests swap.
+    one_member_abstracts: false

@@ -1,0 +1,36 @@
+{
+  "@@locale": "ms",
+  "appName": "Mudawamah",
+  "tagline": "Istiqamah bersama",
+  "navToday": "Hari ini",
+  "navMutabaah": "Mutabaah",
+  "navGroup": "Kumpulan",
+  "nowPrayer": "Sekarang waktu",
+  "phaseSubuh": "Subuh",
+  "phaseDhuha": "Dhuha",
+  "phaseZohor": "Zohor",
+  "phaseAsar": "Asar",
+  "phaseMaghrib": "Maghrib",
+  "phaseIsyak": "Isyak",
+  "nextPrayerIn": "{prayer} dalam {duration}",
+  "@nextPrayerIn": {
+    "placeholders": {
+      "prayer": {"type": "String"},
+      "duration": {"type": "String"}
+    }
+  },
+  "durationHoursMinutes": "{hours} jam {minutes} minit",
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {"type": "int"},
+      "minutes": {"type": "int"}
+    }
+  },
+  "durationMinutes": "{minutes} minit",
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {"type": "int"}
+    }
+  },
+  "comingSoon": "Skrin ini dibina dalam minggu-minggu akan datang."
+}

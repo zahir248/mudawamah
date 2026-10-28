@@ -1,0 +1,32 @@
+# Local development: `docker compose up` starts PostgreSQL and the web app.
+# For hot reload, run only the database (`docker compose up db`) and
+# `npm run dev` inside web/.
+
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: mudawamah
+      POSTGRES_PASSWORD: mudawamah
+      POSTGRES_DB: mudawamah
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mudawamah"]
+      interval: 5s
+      retries: 10
+
+  web:
+    build: ./web
+    environment:
+      DATABASE_URL: postgres://mudawamah:mudawamah@db:5432/mudawamah
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:

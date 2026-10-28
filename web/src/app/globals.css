@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* Same colours as the app (app/lib/core/theme/app_colors.dart). */
+@theme inline {
+  --color-paper: #fffbf4;
+  --color-paper-tint: #f6eee2;
+  --color-ink: #2a2547;
+  --color-ink-muted: #5e566b;
+  --color-gold: #f2c27e;
+  --color-night: #0d1330;
+  --color-night-2: #26305e;
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-newsreader);
+  --font-arabic: var(--font-amiri);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}

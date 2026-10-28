@@ -1,0 +1,19 @@
+{
+  "@@locale": "en",
+  "appName": "Mudawamah",
+  "tagline": "Steadfast, together",
+  "navToday": "Today",
+  "navMutabaah": "Mutabaah",
+  "navGroup": "Group",
+  "nowPrayer": "Now it is",
+  "phaseSubuh": "Subuh",
+  "phaseDhuha": "Dhuha",
+  "phaseZohor": "Zohor",
+  "phaseAsar": "Asar",
+  "phaseMaghrib": "Maghrib",
+  "phaseIsyak": "Isyak",
+  "nextPrayerIn": "{prayer} in {duration}",
+  "durationHoursMinutes": "{hours} h {minutes} min",
+  "durationMinutes": "{minutes} min",
+  "comingSoon": "This screen is being built in the coming weeks."
+}

@@ -39,6 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Build the production image
+        working-directory: .
         run: docker build -t mudawamah-web ./web
       - name: Start the stack and check health
         working-directory: .
